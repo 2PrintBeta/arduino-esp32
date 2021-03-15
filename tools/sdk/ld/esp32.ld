@@ -74,7 +74,11 @@ MEMORY
 
   /* external memory ,including data and text */
   extern_ram_seg(RWX)  :             org = 0x3F800000,
-                                     len = 0x400000
+                                     len = 0xf0000
+                                     
+  /* external memory sample buffer */
+  extern_ram_sample_seg(RWX) :      org = 0x3F8F0000,
+                                    len = 0x310000
 }
 
 /* Heap ends at top of dram0_0_seg */

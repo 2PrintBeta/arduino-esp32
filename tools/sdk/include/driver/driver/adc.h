@@ -228,32 +228,14 @@ int adc1_get_voltage(adc1_channel_t channel) __attribute__((deprecated));
 
 /**
  * @brief Enable ADC power
- * @deprecated Use adc_power_acquire and adc_power_release instead.
  */
-void adc_power_on(void) __attribute__((deprecated));
+void adc_power_on();
 
 /**
  * @brief Power off SAR ADC
- * @deprecated Use adc_power_acquire and adc_power_release instead.
- * This function will force power down for ADC.
- * This function is deprecated because forcing power ADC power off may
- * disrupt operation of other components which may be using the ADC.
+ * This function will force power down for ADC
  */
-void adc_power_off(void) __attribute__((deprecated));
-
-/**
- * @brief Increment the usage counter for ADC module.
- * ADC will stay powered on while the counter is greater than 0.
- * Call adc_power_release when done using the ADC.
- */
-void adc_power_acquire(void);
-
-/**
- * @brief Decrement the usage counter for ADC module.
- * ADC will stay powered on while the counter is greater than 0.
- * Call this function when done using the ADC.
- */
-void adc_power_release(void);
+void adc_power_off();
 
 /**
  * @brief Initialize ADC pad

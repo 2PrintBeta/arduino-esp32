@@ -112,73 +112,44 @@ int coex_wifi_request(uint32_t event, uint32_t latency, uint32_t duration);
 int coex_wifi_release(uint32_t event);
 
 /**
- * @brief Set WiFi channel to coexistence module.
+ * @brief Blue tooth requests coexistence.
  *
- *  @param primary : WiFi primary channel
- *  @param secondary : WiFi secondary channel
+ *  @param event : blue tooth event
+ *  @param latency : blue tooth will request coexistence after latency
+ *  @param duration : duration for blue tooth to request coexistence
  *  @return : 0 - success, other - failed
  */
-int coex_wifi_channel_set(uint8_t primary, uint8_t secondary);
+int coex_bt_request(uint32_t event, uint32_t latency, uint32_t duration);
 
 /**
- * @brief Clear coexistence status.
+ * @brief Blue tooth release coexistence.
  *
- *  @param type : Coexistence status type
- *  @param status: Coexistence status
- */
-void coex_schm_status_bit_clear(uint32_t type, uint32_t status);
-
-/**
- * @brief Set coexistence status.
- *
- *  @param type : Coexistence status type
- *  @param status: Coexistence status
- */
-void coex_schm_status_bit_set(uint32_t type, uint32_t status);
-
-/**
- * @brief Set coexistence scheme interval.
- *
- *  @param interval : Coexistence scheme interval
+ *  @param event : blue tooth event
  *  @return : 0 - success, other - failed
  */
-int coex_schm_interval_set(uint32_t interval);
+int coex_bt_release(uint32_t event);
 
 /**
- * @brief Get coexistence scheme interval.
+ * @brief Register callback function for blue tooth.
  *
- *  @return : Coexistence scheme interval
- */
-uint32_t coex_schm_interval_get(void);
-
-/**
- * @brief Get current coexistence scheme period.
- *
- *  @return : Coexistence scheme period
- */
-uint8_t coex_schm_curr_period_get(void);
-
-/**
- * @brief Get current coexistence scheme phase.
- *
- *  @return : Coexistence scheme phase
- */
-void * coex_schm_curr_phase_get(void);
-
-/**
- * @brief Set current coexistence scheme phase index.
- *
- *  @param interval : Coexistence scheme phase index
+ *  @param cb : callback function
  *  @return : 0 - success, other - failed
  */
-int coex_schm_curr_phase_idx_set(int idx);
+int coex_register_bt_cb(coex_func_cb_t cb);
 
 /**
- * @brief Get current coexistence scheme phase index.
+ * @brief Lock before reset base band.
  *
- *  @return : Coexistence scheme phase index
+ *  @return : lock value
  */
-int coex_schm_curr_phase_idx_get(void);
+uint32_t coex_bb_reset_lock(void);
+
+/**
+ * @brief Unlock after reset base band.
+ *
+ *  @param restore : lock value
+ */
+void coex_bb_reset_unlock(uint32_t restore);
 
 /**
  * @brief Register coexistence adapter functions.

@@ -140,6 +140,7 @@ typedef enum {
     ESP_IMAGE_VERIFY_SILENT, /* Verify image contents, load metadata. Don't print errors. */
 #ifdef BOOTLOADER_BUILD
     ESP_IMAGE_LOAD,          /* Verify image contents, load to memory. Print errors. */
+    ESP_IMAGE_LOAD_NO_VALIDATE,  /* Not verify image contents, load to memory, load metadata. Print errors. */
 #endif
 } esp_image_load_mode_t;
 
@@ -225,6 +226,7 @@ esp_err_t esp_image_verify(esp_image_load_mode_t mode, const esp_partition_pos_t
  * - ESP_ERR_INVALID_ARG if the partition or data pointers are invalid.
  */
 esp_err_t bootloader_load_image(const esp_partition_pos_t *part, esp_image_metadata_t *data);
+esp_err_t bootloader_load_image_no_verify(const esp_partition_pos_t *part, esp_image_metadata_t *data);
 
 /**
  * @brief Verify the bootloader image.

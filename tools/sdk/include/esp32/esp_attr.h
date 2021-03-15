@@ -44,6 +44,7 @@
 #if CONFIG_SPIRAM_ALLOW_BSS_SEG_EXTERNAL_MEMORY
 // Forces bss variable into external memory. "
 #define EXT_RAM_ATTR _SECTION_ATTR_IMPL(".ext_ram.bss", __COUNTER__)
+#define EXT_RAM_ATTR_NO_RESET _SECTION_ATTR_IMPL(".ext_ram_no_reset.bss", __COUNTER__)
 #else
 #define EXT_RAM_ATTR 
 #endif

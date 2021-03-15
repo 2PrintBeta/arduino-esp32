@@ -16,3 +16,16 @@ SECTIONS
     _ext_ram_bss_end = ABSOLUTE(.);
   } > extern_ram_seg
 }
+
+
+SECTIONS
+{
+   /* external memory bss,for sample buffer*/
+  .ext_ram_no_memset.bss (NOLOAD) :
+  {
+    _ext_ram_no_memset_bss_start = ABSOLUTE(.);
+    *(.ext_ram_no_reset.bss*)
+    . = ALIGN(4);
+    _ext_ram_no_memset_bss_end = ABSOLUTE(.);
+  } > extern_ram_sample_seg
+}
